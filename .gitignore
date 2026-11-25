@@ -1,0 +1,28 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# IDE
+.idea/
+.vscode/
+
+# Models and checkpoints
+checkpoints/
+outputs/
+*.pt
+*.pth
+*.bin
+*.safetensors
+
+# W&B local files
+wandb/
+
+# Secrets and environment files
+.env
+*.env
+
+# OS
+.DS_Store
+Thumbs.db

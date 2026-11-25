@@ -1,0 +1,27 @@
+MODEL_NAME = "Qwen/Qwen2.5-0.5B"
+DATASET_NAME = "HuggingFaceH4/ultrachat_200k"
+
+OUTPUT_DIR = "./checkpoints/qwen-general-instruction-lora"
+
+MAX_LENGTH = 512
+MAX_STEPS = 300
+LEARNING_RATE = 2e-4
+WEIGHT_DECAY = 0.0005
+DROPOUT = 2e-4
+TRAIN_BATCH_SIZE = 1
+EVAL_BATCH_SIZE = 1
+ACCUM_STEPS = 8
+EVAL_STRATEGY = "steps"
+EVAL_STEPS = 25
+
+R=8
+LORA_ALPHA = 16
+LORA_DROPOUT = DROPOUT
+TARGET_MODULES = [
+    "q_proj",
+    "k_proj",
+    "v_proj",
+    "o_proj",
+]
+BIAS = "none"
+TASKTYPE="CAUSAL_LM"
