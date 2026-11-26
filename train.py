@@ -1,4 +1,4 @@
-from config import EVAL_STEPS,EVAL_STRATEGY,WEIGHT_DECAY,EVAL_BATCH_SIZE,MAX_LENGTH,MAX_STEPS,OUTPUT_DIR,DATASET_NAME,MODEL_NAME,DROPOUT,TRAIN_BATCH_SIZE,LEARNING_RATE,ACCUM_STEPS,BIAS,LORA_ALPHA,LORA_DROPOUT,R,TARGET_MODULES,TASKTYPE
+from config import EVAL_STEPS,EVAL_STRATEGY,WEIGHT_DECAY,EVAL_BATCH_SIZE,MAX_LENGTH,MAX_STEPS,OUTPUT_DIR,DATASET_NAME,MODEL_NAME,DROPOUT,TRAIN_BATCH_SIZE,LEARNING_RATE,ACCUM_STEPS,BIAS,LORA_ALPHA,LORA_DROPOUT,R,TARGET_MODULES,TASKTYPE,LOGGING_STEPS
 from dataset import load_train_dataset,load_test_dataset,load_val_dataset,prepare_dataset
 from model import load_tokenizer,load_model
 from peft_config import create_lora_config
@@ -23,6 +23,8 @@ def main():
     #val_dataset = load_val_dataset(DATASET_NAME)
     small_train_dataset = train_dataset.select(range(5000))
     small_test_dataset = test_dataset.select(range(500))
+    train_dataset= prepare_dataset(train_dataset)
+    test_dataset= prepare_dataset(test_dataset)
     #small_val_dataset = val_dataset.select(range(100))
     small_train_dataset = prepare_dataset(small_train_dataset)
     small_test_dataset = prepare_dataset(small_test_dataset)
@@ -41,7 +43,7 @@ def main():
         eval_steps=EVAL_STEPS,
         eval_strategy=EVAL_STRATEGY,
         report_to="wandb",
-        logging_steps=1
+        logging_steps=LOGGING_STEPS
     )
 
     lora_config = create_lora_config(
@@ -56,7 +58,7 @@ def main():
     trainer = create_trainer(
         model=model,
         args=training_args,
-        train_dataset=small_train_dataset,
+        train_dataset=train_dataset,
         eval_dataset=small_test_dataset,
         processing_class=tokenizer,
         peft_config=lora_config

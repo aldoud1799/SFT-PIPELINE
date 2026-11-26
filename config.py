@@ -1,10 +1,10 @@
 MODEL_NAME = "Qwen/Qwen2.5-0.5B"
 DATASET_NAME = "HuggingFaceH4/ultrachat_200k"
 
-OUTPUT_DIR = "./checkpoints/qwen-general-instruction-lora"
+OUTPUT_DIR = "./checkpoints/qwen-general-instruction-lora/intermedita"
 
 MAX_LENGTH = 512
-MAX_STEPS = 200
+MAX_STEPS = 1000
 LEARNING_RATE = 2e-4
 WEIGHT_DECAY = 0.0005
 DROPOUT = 2e-4
@@ -12,7 +12,8 @@ TRAIN_BATCH_SIZE = 1
 EVAL_BATCH_SIZE = 1
 ACCUM_STEPS = 8
 EVAL_STRATEGY = "steps"
-EVAL_STEPS = 25
+EVAL_STEPS = 250
+LOGGING_STEPS = 10
 
 R=8
 LORA_ALPHA = 16
