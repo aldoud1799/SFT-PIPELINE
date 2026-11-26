@@ -1,7 +1,7 @@
 MODEL_NAME = "Qwen/Qwen2.5-0.5B"
 DATASET_NAME = "HuggingFaceH4/ultrachat_200k"
 
-OUTPUT_DIR = "./checkpoints/qwen-general-instruction-lora/intermediate"
+OUTPUT_DIR = "./checkpoints/qwen-general-instruction-lora"
 
 MAX_LENGTH = 512
 MAX_STEPS = 200
