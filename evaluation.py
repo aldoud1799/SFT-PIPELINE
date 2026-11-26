@@ -34,17 +34,25 @@ DTYPE = (
 
 
 TEST_PROMPTS = [
-    "What is machine learning?",
+    "Return exactly three Python learning tips. Use JSON with a key named tips.",
 
-    "Explain transformers in simple terms.",
+    "Explain gradient descent in exactly two sentences.",
 
-    "Create a study plan for becoming an AI engineer.",
+    "Classify this review as positive or negative. Return only the label: "
+    "\"The product broke after one day.\"",
 
-    "Write a Python function that reverses a string.",
+    "Rewrite this sentence formally: "
+    "\"hey can u send me that file asap\"",
 
-    "Explain the difference between supervised and unsupervised learning.",
+    "List four benefits of regular exercise. "
+    "Each item must contain exactly five words.",
 
-    "Give me three practical tips for learning Python.",
+    "Write a Python function named is_even with type hints. "
+    "Return only the code.",
+
+    "Summarize this in fewer than 20 words: "
+    "\"Machine learning systems identify patterns in data "
+    "and use those patterns to make predictions.\"",
 ]
 
 
