@@ -1,0 +1,4 @@
+from config import MODEL_NAME,OUTPUT_DIR,OUTPUT_DIR_2,OUTPUT_DIR_3
+from transformers import AutoTokenizer,AutoModelForCausalLM
+
+BASE

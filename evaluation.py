@@ -1,7 +1,7 @@
 # ============================================================
 # BASE MODEL VS LORA MODEL GENERATION TEST
 # ============================================================
-from config import OUTPUT_DIR
+from config import OUTPUT_DIR,OUTPUT_DIR_2,OUTPUT_DIR_3
 import gc
 
 import torch
@@ -133,11 +133,13 @@ def generate_response(
     prompt_length = inputs["input_ids"].shape[1]
 
     with torch.inference_mode():
+        IM_END = tokenizer.convert_tokens_to_ids("<|im_end|>")
+
         outputs = model.generate(
             **inputs,
             max_new_tokens=150,
             do_sample=False,
-            eos_token_id=tokenizer.eos_token_id,
+            eos_token_id=[IM_END, tokenizer.eos_token_id],
             pad_token_id=tokenizer.pad_token_id,
         )
 
