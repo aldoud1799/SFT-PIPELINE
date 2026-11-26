@@ -29,7 +29,7 @@ def create_training_args(
         gradient_accumulation_steps=gradient_accumulation_steps,
         use_cpu=False,
         bf16=False,
-        fp16=Treu
+        fp16=True
     )
     return training_args
 
