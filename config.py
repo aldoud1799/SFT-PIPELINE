@@ -4,7 +4,7 @@ DATASET_NAME = "HuggingFaceH4/ultrachat_200k"
 OUTPUT_DIR = "./checkpoints/qwen-general-instruction-lora"
 
 MAX_LENGTH = 512
-MAX_STEPS = 300
+MAX_STEPS = 200
 LEARNING_RATE = 2e-4
 WEIGHT_DECAY = 0.0005
 DROPOUT = 2e-4
