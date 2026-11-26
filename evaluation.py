@@ -1,7 +1,7 @@
 # ============================================================
 # BASE MODEL VS LORA MODEL GENERATION TEST
 # ============================================================
-
+from config import OUTPUT_DIR
 import gc
 
 import torch
@@ -20,9 +20,7 @@ from transformers import (
 
 BASE_MODEL_NAME = "Qwen/Qwen2.5-0.5B"
 
-ADAPTER_PATH = (
-    "./checkpoints/qwen-general-instruction-lora"
-)
+ADAPTER_PATH = OUTPUT_DIR
 
 DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
 
