@@ -2,15 +2,10 @@ MODEL_NAME = "Qwen/Qwen2.5-0.5B"
 DATASET_NAME = "HuggingFaceH4/ultrachat_200k"
 
 OUTPUT_DIR = (
-    "./checkpoints/qwen-general-instruction-lora/"
+    "./content/drive/checkpoints/qwen-general-instruction-lora/"
     "assistant-only-1000"
 )
-OUTPUT_DIR_2 = (
-    "./checkpoints/qwen-general-instruction-lora/"
-)
-OUTPUT_DIR_3 = (
-    "./checkpoints/qwen-general-instruction-lora/intermediata"
-)
+
 MAX_LENGTH = 512
 MAX_STEPS = 1000
 LEARNING_RATE = 2e-4
