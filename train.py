@@ -3,6 +3,7 @@ from dataset import load_train_dataset,load_test_dataset,load_val_dataset,prepar
 from model import load_tokenizer,load_model
 from peft_config import create_lora_config
 from trainer import create_trainer,create_training_args
+from transformers.trainer_utils import get_last_checkpoint
 import os
 os.environ["WANDB_PROJECT"] = "phase-3-post-training"
 
@@ -44,7 +45,10 @@ def main():
         eval_strategy=EVAL_STRATEGY,
         report_to="wandb",
         logging_steps=LOGGING_STEPS,
-        assistant_only_loss=ASSISTANT_ONLY_LOSS
+        assistant_only_loss=ASSISTANT_ONLY_LOSS,
+        save_strategy="steps",
+        save_steps=250,
+        save_total_limit=3
     )
 
     lora_config = create_lora_config(
@@ -67,9 +71,14 @@ def main():
     #===============================================================================
     #START TRAINING
     #===============================================================================
-    training_result = trainer.train()
-    print("TRAINING IS COMPLETE")
-    print(training_result.metrics)
+    latest_checkpoint = get_last_checkpoint(OUTPUT_DIR)
+    if latest_checkpoint:
+        print(f"Resuming from checkpoint: {latest_checkpoint}")
+        training_result = trainer.train(resume_from_checkpoint=latest_checkpoint)
+    else:
+        training_result = trainer.train()
+        print("TRAINING IS COMPLETE")
+        print(training_result.metrics)
     #===============================================================================
     #SAVE THE MODEL AND THE TOKENIZER
     #===============================================================================

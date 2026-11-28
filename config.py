@@ -1,10 +1,11 @@
-MODEL_NAME = "Qwen/Qwen2.5-0.5B"
+MODEL_NAME = "HuggingFaceTB/SmolLM2-360M"
 DATASET_NAME = "HuggingFaceH4/ultrachat_200k"
 
 OUTPUT_DIR = (
-    "./content/drive/MyDrive/llms/checkpoints/qwen-general-instruction-lora/"
-    "assistant-only-1000"
+    "/content/drive/MyDrive/llms/checkpoints/general-instruction-lora/"
 )
+
+
 
 MAX_LENGTH = 512
 MAX_STEPS = 1000

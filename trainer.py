@@ -13,7 +13,10 @@ def create_training_args(
         eval_strategy,
         report_to,
         logging_steps,
-        assistant_only_loss
+        assistant_only_loss,
+        save_strategy,
+        save_steps,
+        save_total_limit
 ):
     training_args = SFTConfig(
         output_dir=output_dir,
@@ -31,7 +34,10 @@ def create_training_args(
         gradient_accumulation_steps=gradient_accumulation_steps,
         use_cpu=False,
         bf16=False,
-        fp16=True
+        fp16=True,
+        save_strategy=save_strategy,
+        save_steps=save_steps,
+        save_total_limit=save_total_limit
     )
     return training_args
 
