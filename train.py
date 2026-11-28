@@ -7,7 +7,13 @@ from transformers.trainer_utils import get_last_checkpoint
 import os
 os.environ["WANDB_PROJECT"] = "phase-3-post-training"
 
+
+
 def main():
+    #===============================================================================
+    # FRESH START OVERRIDE FLAG
+    #===============================================================================
+    FRESH_START = False
     #===============================================================================
     #LOAD THE TOKENIZER AND THE MODEL
     #===============================================================================
@@ -71,7 +77,8 @@ def main():
     #===============================================================================
     #START TRAINING
     #===============================================================================
-    latest_checkpoint = get_last_checkpoint(OUTPUT_DIR)
+    latest_checkpoint =(None if FRESH_START else get_last_checkpoint(OUTPUT_DIR))
+
     if latest_checkpoint:
         print(f"Resuming from checkpoint: {latest_checkpoint}")
         training_result = trainer.train(resume_from_checkpoint=latest_checkpoint)
